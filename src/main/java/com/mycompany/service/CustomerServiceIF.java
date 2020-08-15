@@ -16,5 +16,6 @@ public interface CustomerServiceIF {
     public List <Customer> getCustomers();
     public void saveCustomer(Customer theCustomer);
     public Customer getCustomer(int theId);
+    public Customer getCustomerByEmail(String email);
     public void deleteCustomer(int theId);
 }

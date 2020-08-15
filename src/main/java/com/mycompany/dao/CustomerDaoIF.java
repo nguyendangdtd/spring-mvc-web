@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CustomerDaoIF extends CrudRepository<Customer, Integer> {
-    
+    Customer findByEmail(String email);
 }
