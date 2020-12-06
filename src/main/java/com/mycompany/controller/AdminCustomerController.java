@@ -8,6 +8,8 @@ package com.mycompany.controller;
 import com.mycompany.entity.Customer;
 import com.mycompany.service.CustomerServiceIF;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;

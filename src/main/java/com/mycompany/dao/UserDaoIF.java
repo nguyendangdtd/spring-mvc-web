@@ -7,18 +7,19 @@ package com.mycompany.dao;
 
 import java.util.List;
 
-import com.mycompany.custom.objects.UserInfo;
-import com.mycompany.entity.Customer;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import com.mycompany.custom.objects.UserInfo;
+import com.mycompany.entity.Customer;
+import com.mycompany.entity.User;
 
 /**
  *
  * @author XV
  */
 @Repository
-public interface CustomerDaoIF extends CrudRepository<Customer, Integer> {
-    Customer findByEmail(String email);
+public interface UserDaoIF extends CrudRepository<User, Long> {
+    User findByUsername(String username);
 }
