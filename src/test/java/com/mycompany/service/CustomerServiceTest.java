@@ -56,9 +56,9 @@ public class CustomerServiceTest {
     }
 
 
-    /*@Configuration
+    @Configuration
     @ComponentScan("com.mycompany.*")
     static class ContextConfiguration {
 
-    }*/
+    }
 }

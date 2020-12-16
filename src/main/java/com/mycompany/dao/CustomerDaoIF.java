@@ -5,12 +5,8 @@
  */
 package com.mycompany.dao;
 
-import java.util.List;
-
-import com.mycompany.custom.objects.UserInfo;
 import com.mycompany.entity.Customer;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
