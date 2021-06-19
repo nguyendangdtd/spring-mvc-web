@@ -22,27 +22,27 @@
 	<div class="container">
 	    <div class="col-md-offset-1 col-md-10">
 		<h2>CRM - Customer Relationship Manager</h2>
-                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <!-- For login user -->
-                    <form action="<c:url value='/j_spring_security_logout' />" method="post" id="logoutForm">
-                            <input type="hidden" name="${_csrf.parameterName}"
-                                    value="${_csrf.token}" />
-                    </form>
-                    <script>
-                            function formSubmit() {
-                                    document.getElementById("logoutForm").submit();
-                            }
-                    </script>
+		<!-- Display logout button only for user is admin-->
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<!-- For login user -->
+			<form action="<c:url value='/j_spring_security_logout' />" method="post" id="logoutForm">
+					<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+			</form>
+			<script>
+					function formSubmit() {
+							document.getElementById("logoutForm").submit();
+					}
+			</script>
 
-                    <c:if test="${pageContext.request.userPrincipal.name != null}">
-                            <h2>
-                                    User : ${pageContext.request.userPrincipal.name} | <a
-                                            href="javascript:formSubmit()"> Logout</a>
-                            </h2>
-                    </c:if>
-                </sec:authorize>
+			<c:if test="${pageContext.request.userPrincipal.name != null}">
+					<h2>
+							User : ${pageContext.request.userPrincipal.name} | <a
+									href="javascript:formSubmit()"> Logout</a>
+					</h2>
+			</c:if>
+		</sec:authorize>
 		<hr />
-
 		<input type="button" value="Add Customer"
 		       onclick="window.location.href = 'showForm'; return false;"
 		       class="btn btn-primary" />
@@ -80,18 +80,17 @@
 
 				    <td>
 					<!-- display the update link --> 
-					<a href="${updateLink}">Update</a>| 
+					<a href="<c:url value="/customer/updateForm?customerId=${tempCustomer.id}" />">Update</a>|
 					<a href="${deleteLink}"	onclick="if (!(confirm('Are you sure you want to delete this customer?')))
 					    return false">Delete</a>
 				    </td>
 				</tr>
 			    </c:forEach>
 			</table>
-                        <c:url value="/list" var="pagedLink">
-                                <c:param name="p" value="~" />
-                        </c:url>
-                        <tg:paging pagedListHolder="${pagedListHolder}"
-			pagedLink="${pagedLink}" />
+			<c:url value="/customer/list" var="pagedLink">
+					<c:param name="p" value="~" />
+			</c:url>
+			<tg:paging pagedListHolder="${pagedListHolder}"	pagedLink="${pagedLink}" />
 		    </div>
 		</div>
 	    </div>

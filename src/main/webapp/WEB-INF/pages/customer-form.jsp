@@ -26,24 +26,25 @@
 			<div class="panel-title">Add Customer</div>
 		    </div>
 		    <div class="panel-body">
-			<form:form action="saveCustomer" cssClass="form-horizontal"
-				   method="post" modelAttribute="customer">
+			<form:form action="saveCustomer" cssClass="form-horizontal" modelAttribute="customer">
 
 			    <!-- need to associate this data with customer id -->
 			    <form:hidden path="id" />
 
 			    <div class="form-group">
-				<label for="firstname" class="col-md-3 control-label">First
+				<label for="firstName" class="col-md-3 control-label">First
 				    Name</label>
 				<div class="col-md-9">
 				    <form:input path="firstName" cssClass="form-control" />
+					<form:errors path="firstName" cssStyle="color: red"/><br><br>
 				</div>
 			    </div>
 			    <div class="form-group">
-				<label for="lastname" class="col-md-3 control-label">Last
+				<label for="lastName" class="col-md-3 control-label">Last
 				    Name</label>
 				<div class="col-md-9">
 				    <form:input path="lastName" cssClass="form-control" />
+					<form:errors path="lastName" cssStyle="color: red"/><br><br>
 				</div>
 			    </div>
 
@@ -51,8 +52,17 @@
 				<label for="email" class="col-md-3 control-label">Email</label>
 				<div class="col-md-9">
 				    <form:input path="email" cssClass="form-control" />
+					<form:errors path="email" cssStyle="color: red"/><br><br>
 				</div>
 			    </div>
+
+				<div class="form-group">
+					<label for="registration" class="col-md-3 control-label">Registration Date</label>
+					<div class="col-md-9">
+						<form:input type="date" path="registrationDate" cssClass="form-control" />
+						<form:errors path="registrationDate" cssStyle="color: red"/><br><br>
+					</div>
+				</div>
 
 			    <div class="form-group">
 				<!-- Button -->

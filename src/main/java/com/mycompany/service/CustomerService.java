@@ -7,17 +7,13 @@ package com.mycompany.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.ValidatorFactory;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.mycompany.dao.CustomerDaoIF;
+import com.mycompany.dao.CustomerRepository;
 import com.mycompany.entity.Customer;
 
 /**
@@ -27,11 +23,11 @@ import com.mycompany.entity.Customer;
 @Service
 public class CustomerService implements CustomerServiceIF {
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	//@Autowired
+	//private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	CustomerDaoIF customerDaoIF;
+	CustomerRepository customerDaoIF;
 
 	@Override
 	public List<Customer> getCustomers() {
@@ -39,14 +35,8 @@ public class CustomerService implements CustomerServiceIF {
 	}
 
 	@Override
-	public void saveCustomer(Customer theCustomer) {
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-		Set<ConstraintViolation<Customer>> violations = factory.getValidator().validate(theCustomer);
-		if (violations.isEmpty()) {
-			customerDaoIF.save(theCustomer);
-		} else {
-			System.out.println("validate wrong, do not execute database script");
-		}
+	public void saveCustomer(@Valid Customer theCustomer) {
+		customerDaoIF.save(theCustomer);
 	}
 
 	@Override
